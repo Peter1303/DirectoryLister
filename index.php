@@ -1,52 +1,20 @@
 <?php
-
-    // Include the DirectoryLister class
-    require_once('resources/DirectoryLister.php');
-
-    // Initialize the DirectoryLister object
-    $lister = new DirectoryLister();
-
-    // Restrict access to current directory
-    ini_set('open_basedir', getcwd());
-
-    // Return file hash
-    if (isset($_GET['hash'])) {
-
-        // Get file hash array and JSON encode it
-        $hashes = $lister->getFileHash($_GET['hash']);
-        $data   = json_encode($hashes);
-
-        // Return the data
-        die($data);
-
-    }
-
-    if (isset($_GET['zip'])) {
-
-        $dirArray = $lister->zipDirectory($_GET['zip']);
-
+// 加入 DirectoryLister class
+require_once('resources/DirectoryLister.php');
+// 初始化 DirectoryLister 对象
+$lister = new DirectoryLister();
+// 限制访问当前目录
+ini_set('open_basedir', getcwd());
+if (isset($_GET['zip'])) {
+    $dirArray = $lister->zipDirectory($_GET['zip']);
+} else {
+    // 初始化目录数组
+    if (isset($_GET['dir'])) {
+        $dirArray = $lister->listDirectory($_GET['dir']);
     } else {
-
-        // Initialize the directory array
-        if (isset($_GET['dir'])) {
-            $dirArray = $lister->listDirectory($_GET['dir']);
-        } else {
-            $dirArray = $lister->listDirectory('.');
-        }
-
-        // Define theme path
-        if (!defined('THEMEPATH')) {
-            define('THEMEPATH', $lister->getThemePath());
-        }
-
-        // Set path to theme index
-        $themeIndex = $lister->getThemePath(true) . '/index.php';
-
-        // Initialize the theme
-        if (file_exists($themeIndex)) {
-            include($themeIndex);
-        } else {
-            die('ERROR: Failed to initialize theme');
-        }
-
+        $dirArray = $lister->listDirectory('.');
     }
+    define('PATH', __DIR__ . '/resources/');
+    // 初始化页面
+    include('resources/index.php');
+}
