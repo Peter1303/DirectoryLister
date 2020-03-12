@@ -30,7 +30,7 @@ return array(
     'index_files' => array(
         'index.htm',
         'index.html',
-        'index.php'
+        'durl.php'
     ),
 
     // 自定义排序顺序

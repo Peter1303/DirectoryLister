@@ -89,7 +89,7 @@ class DirectoryLister {
             //change directory so the zip file doesnt have a tree structure in it.
             chdir($directory);
             // TODO: Probably we have to parse exclude list more carefully
-            $exclude_list = implode(' ', array_merge($this->_config['hidden_files'], array('index.php')));
+            $exclude_list = implode(' ', array_merge($this->_config['hidden_files'], array('durl.php')));
             $exclude_list = str_replace("*", "\*", $exclude_list);
             if ($this->_config['zip_stream']) {
                 // zip the stuff (dir and all in there) into the streamed zip file
@@ -413,7 +413,7 @@ class DirectoryLister {
                     }
                 } elseif (!$this->_isHidden($relativePath)) {
                     // Add all non-hidden files to the array
-                    if ($this->_directory != '.' || $file != 'index.php') {
+                    if ($this->_directory != '.' || $file != 'durl.php') {
                         // Build the file path
                         $urlPath = implode('/', array_map('rawurlencode', explode('/', $relativePath)));
                         if (is_dir($relativePath)) {
