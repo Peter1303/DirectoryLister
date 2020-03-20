@@ -152,7 +152,7 @@ class DirectoryLister {
         // 静态设置主页路径
         $breadcrumbsArray[] = array(
             'link' => $this->_appURL,
-            'text' => 'Home'
+            'bk' => 'Home'
         );
         // Generate breadcrumbs
         foreach ($dirArray as $key => $dir) {
@@ -170,7 +170,7 @@ class DirectoryLister {
                 $link = $this->_appURL . '?dir=' . rawurlencode($dirPath);
                 $breadcrumbsArray[] = array(
                     'link' => $link,
-                    'text' => $dir
+                    'bk' => $dir
                 );
             }
         }
@@ -294,7 +294,7 @@ class DirectoryLister {
         // Set the error message
         $this->_systemMessage[] = array(
             'type'  => $type,
-            'text'  => $text
+            'bk'  => $text
         );
         return true;
     }

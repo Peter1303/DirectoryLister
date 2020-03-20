@@ -90,10 +90,10 @@ if (notice) {
         <span class="mdui-typo-headline app-title">
             <?php foreach($breadcrumbs as $breadcrumb): ?>
                 <?php if ($breadcrumb != end($breadcrumbs)): ?>
-                    <a href="<?php echo $breadcrumb['link']; ?>"><?php echo $breadcrumb['text']; ?></a>
+                    <a href="<?php echo $breadcrumb['link']; ?>"><?php echo $breadcrumb['bk']; ?></a>
                     <span> / </span>
                 <?php else: ?>
-                    <?php echo $breadcrumb['text']; ?>
+                    <?php echo $breadcrumb['bk']; ?>
                 <?php endif; ?>
             <?php endforeach; ?>
         </span>
