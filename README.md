@@ -1,4 +1,4 @@
-Directory Lister - 简单的 php 文件索引程序(The simple PHP directory lister)
+﻿Directory Lister - 简单的 php 文件索引程序(The simple PHP directory lister)
 ==================================================
 Created by, [Chris Kankiewicz](http://www.ChrisKankiewicz.com)
 
